@@ -46,18 +46,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * | GESC |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
+     * |CTL(T)|   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |  '   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | CTL  | Alt  | INS  | GUI  |_FUNC |    Space    |_NUMBE| Left | Down |  Up  |Right |
      * `-----------------------------------------------------------------------------------'
      */
-    [_QWERTY] = LAYOUT_planck_grid(                                                                                  // Start
-        KC_GESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,                                // Row 1
-        LCTL_T(KC_TAB), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT,                       // Row 2
-        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,                        // Row 3
-        KC_LCTL, KC_LALT, KC_INS, KC_LGUI, MO(_FUNC), KC_SPC, KC_SPC, MO(_NUMBER), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT  // Row 4
+    [_QWERTY] = LAYOUT_planck_mit(                                                                           // Start
+        KC_GESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,                        // Row 1
+        LCTL_T(KC_TAB), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT,               // Row 2
+        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,                // Row 3
+        KC_LCTL, KC_LALT, KC_INS, KC_LGUI, MO(_FUNC), KC_SPC, MO(_NUMBER), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT  // Row 4
         ),
 
     /* NUMBER
@@ -66,16 +66,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |      |      |      |   -  |   =  |  [   |   ]  |  T-: |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      | T-Z  |  T-X | T-C  | T-V  |   B  | T-N  | T-M  |  T-, |      |      |  \   |
+     * |      | T-Z  |  T-X | T-C  | T-V  |      | T-N  | T-M  |  T-, |      |      |  \   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      |_TMUX |             |MO(4) | HOME | PGDN | PGUP |  END |
+     * |      |      |      |      |_TMUX |       _SYSTM|      | HOME | PGDN | PGUP |  END |
      * `-----------------------------------------------------------------------------------'
      */
-    [_NUMBER] = LAYOUT_planck_grid(                                                                                     // Start
-        KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_TRNS,                        // Row1
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, TMUX_COLON,   // Row 2
-        KC_TRNS, TMUX_Z, TMUX_X, TMUX_C, TMUX_V, KC_TRNS, TMUX_N, TMUX_M, TMUX_COMMA, KC_TRNS, KC_TRNS, KC_BSLS,        // Row 3
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), KC_TRNS, MO(_SYSTM), KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END  // Row5
+    [_NUMBER] = LAYOUT_planck_mit(                                                                                     // Start
+        KC_TRNS, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_DEL,                                   // Row1
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, TMUX_COLON,  // Row 2
+        KC_TRNS, TMUX_Z, TMUX_X, TMUX_C, TMUX_V, KC_TRNS, TMUX_N, TMUX_M, TMUX_COMMA, KC_TRNS, KC_TRNS, KC_BSLS,       // Row 3
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), MO(_SYSTM), KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END          // Row5
         ),
 
     /* Function
@@ -89,47 +89,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |      |      |      |      |      |             |_TMUX | HOME | PGDN | PGUP |  END |
      * `-----------------------------------------------------------------------------------'
      */
-    [_FUNC] = LAYOUT_planck_grid(                                                                                    // Start
+    [_FUNC] = LAYOUT_planck_mit(                                                                                     // Start
         KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_TRNS,                     // Row 1
-        KC_LCTL, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    // Row 2
+        KC_LCTL, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_TRNS, KC_TRNS,      // Row 2
         KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  // Row 3
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), KC_HOME, KC_PGDN, KC_PGUP, KC_END  // Row 4
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), KC_HOME, KC_PGDN, KC_PGUP, KC_END           // Row 4
         ),
 
     /* TMUX
      * ,-----------------------------------------------------------------------------------.
-     * |      |      |      |      |      |      |      |      |      | T-CO |  T-P |      |
+     * |      | T-Q  |      |      |      |      |      |      |      | T-CO |  T-P |      |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |      | T-A  |  T-S | T-D  |      |      |      | T--  |  T-+ | T-[  | T-]  |      |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
      * |      | T-Z  |  T-X | T-C  | T-V  |      | T-N  | T-M  |  T-, |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      |             |      |      |      |      |      |      |
+     * |      |      |      |      |      |             |      |      |      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
-    [_TMUX] = LAYOUT_planck_grid(                                                                                                     // Start
+    [_TMUX] = LAYOUT_planck_mit(                                                                                                      // Start
         KC_TRNS, TMUX_Q, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TMUX_CTRL_O, TMUX_P, KC_TRNS,                 // Row1
         KC_TRNS, TMUX_A, TMUX_S, TMUX_D, KC_TRNS, KC_TRNS, KC_TRNS, TMUX_MINUS, TMUX_PLUS, TMUX_OPEN_SQ_B, TMUX_CLOSE_SQ_B, KC_TRNS,  // Row2
         KC_TRNS, TMUX_Z, TMUX_X, TMUX_C, TMUX_V, KC_TRNS, TMUX_N, TMUX_M, TMUX_COMMA, KC_TRNS, KC_TRNS, KC_TRNS,                      // Row3
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS                    // Row4
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS                             // Row4
         ),
 
     /* SYSTEM
      * ,-----------------------------------------------------------------------------------.
-     * |      | BTN1 | BTN2 | BTN3 | BTN4 | BTN5 |      |      |      |      |      |      |
+     * |      | BTN1 | MS_U | BTN2 | BTN3 |      |      |      |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      | MS_U |      |      |      |      |      |      |      |RGB_FW|RGB_TO|
+     * |      | MS_L | MS_D | MS_R |      |      |      |      |      |      |RGB_FW|RGB_TO|
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      | MS_L | MS_D | MS_R |      |      |      | MUTE |      |      |      |      |
+     * |      |      |      |      |      |      |      | MUTE |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
      * `-----------------------------------------------------------------------------------'
      */
-    [_SYSTM] = LAYOUT_planck_grid(                                                                                            // Start
-        KC_TRNS, KC_BTN1, KC_BTN2, KC_BTN3, KC_BTN4, KC_BTN5, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           // Row1
-        KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RGB_MODE_FORWARD, RGB_TOG,  // Row2
-        KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           // Row3
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY            // Row4
+    [_SYSTM] = LAYOUT_planck_mit(                                                                                             // Start
+        KC_TRNS, KC_BTN1, KC_MS_U, KC_BTN2, KC_BTN3, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           // Row1
+        KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RGB_MODE_FORWARD, RGB_TOG,  // Row2
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           // Row3
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY                     // Row4
         ),
 };
 
