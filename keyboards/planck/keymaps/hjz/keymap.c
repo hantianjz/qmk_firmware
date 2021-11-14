@@ -140,7 +140,7 @@ void tmux_code(keyrecord_t *record, char *tmux_code) {
     }
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool process_tmux_record(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case TMUX_Q:
             tmux_code(record, "q");
@@ -204,3 +204,98 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 };
+
+static volatile bool ctrl_hold;
+static volatile bool gui_hold;
+
+bool process_control_record(uint16_t keycode, keyrecord_t *record) {
+    if (!record->event.pressed) {
+        return true;
+    }
+
+    switch (keycode) {
+        case LCTL_T(KC_TAB):
+            ctrl_hold = true;
+            break;
+        case KC_GESC:
+            if (ctrl_hold) {
+                tap_code(KC_TAB);
+                return false;
+            }
+            break;
+    }
+    return true;
+}
+
+bool process_gui_record(uint16_t keycode, keyrecord_t *record) {
+    if (!record->event.pressed) {
+        return true;
+    }
+
+    int map_key = KC_NO;
+
+    switch (keycode) {
+        case KC_LGUI:
+            gui_hold = true;
+            break;
+        case KC_Q:
+            map_key = KC_1;
+            break;
+        case KC_W:
+            map_key = KC_2;
+            break;
+        case KC_E:
+            map_key = KC_3;
+            break;
+        case KC_R:
+            map_key = KC_4;
+            break;
+        case KC_T:
+            map_key = KC_5;
+            break;
+        case KC_Y:
+            map_key = KC_6;
+            break;
+        case KC_U:
+            map_key = KC_7;
+            break;
+        case KC_I:
+            map_key = KC_8;
+            break;
+        case KC_O:
+            map_key = KC_9;
+            break;
+        case KC_P:
+            map_key = KC_0;
+            break;
+    }
+    if (gui_hold && (map_key != KC_NO)) {
+        tap_code(map_key);
+        return false;
+    }
+    return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if ((keycode >= TMUX_Q) && (keycode <= TMUX_PLUS)) {
+        return process_tmux_record(keycode, record);
+    } else if ((keycode == LCTL_T(KC_TAB)) || (keycode == KC_GESC)) {
+        return process_control_record(keycode, record);
+    } else if ((keycode == KC_LGUI) || gui_hold) {
+        return process_gui_record(keycode, record);
+    }
+    return true;
+}
+
+void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!record->event.pressed) {
+        switch (keycode) {
+            case LCTL_T(KC_TAB):
+                ctrl_hold = false;
+                break;
+            case KC_LGUI:
+                gui_hold = false;
+                break;
+        }
+    }
+}
