@@ -1,0 +1,7 @@
+/*
+ * AUTO SHIFT
+ */
+#define AUTO_SHIFT_TIMEOUT 200
+#define NO_AUTO_SHIFT_ALPHA
+
+#define TAPPING_TERM_PER_KEY
