@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
-enum layers { _QWERTY, _NUMBER, _FUNC, _TMUX, _SYSTM };
+enum layers { _QWERTY, _FUNC, _NUMBER, _TMUX, _SYSTM };
 
 enum custom_keycodes {
     TMUX_Q = SAFE_RANGE,
@@ -37,10 +37,10 @@ enum {
 // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
-    [TD_LD]    = ACTION_TAP_DANCE_DOUBLE(KC_LEFT, KC_DOWN),  // Left,  Down
-    [TD_RU]    = ACTION_TAP_DANCE_DOUBLE(KC_RGHT, KC_UP),    // Right, UP
-    [TD_PDHM]  = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_HOME),  // Page Down, HOME
-    [TD_PUED]  = ACTION_TAP_DANCE_DOUBLE(KC_PGUP, KC_END),   // Page Up  , END
+    [TD_LD]   = ACTION_TAP_DANCE_DOUBLE(KC_LEFT, KC_DOWN),  // Left,  Down
+    [TD_RU]   = ACTION_TAP_DANCE_DOUBLE(KC_RGHT, KC_UP),    // Right, UP
+    [TD_PDHM] = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_HOME),  // Page Down, HOME
+    [TD_PUED] = ACTION_TAP_DANCE_DOUBLE(KC_PGUP, KC_END),   // Page Up  , END
 };
 
 // clang-format off
@@ -77,39 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                           KC_TRNS,                KC_TRNS,
                                               LT(_FUNC, KC_SPC), KC_TRNS, KC_TRNS,                KC_TRNS, KC_TRNS, LT(_NUMBER, KC_SPC)
 ),
-/* Keymap 1: Number Layer
- *
- * ,---------------------------------------------------.           ,--------------------------------------------------.
- * |         |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |         |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   Del  |
- * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |         |      |      |      |      |      |------|           |------|_SYSTM|   -  |   =  |   [  |   ]  |   T-:  |
- * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |         |  T-Z |  T-X |  T-C |  T-V |      |      |           |      |  T-N |  T-M |  T-, |      |      |    \   |
- * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |       |      |      |      |      |                                       | HOME | PGDN | PGUP |  END |      |
- *   `-----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-[_NUMBER] = LAYOUT_ergodox_pretty(
-  // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_TRNS,     KC_TRNS, KC_6,    KC_7,    KC_8,       KC_9,    KC_0,    KC_DEL,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   MO(_SYSTM),  KC_MINS, KC_EQL,     KC_LBRC, KC_RBRC, TMUX_COLON,
-  KC_TRNS, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  KC_TRNS, KC_TRNS,     KC_TRNS, TMUX_N,  TMUX_M,  TMUX_COMMA, KC_TRNS, KC_TRNS, KC_BSLS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                     TD(TD_PDHM), TD(TD_PUED), KC_TRNS, KC_TRNS,  KC_TRNS,
-                                               KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
-                                                        KC_TRNS,     KC_TRNS,
-                                    MO(_TMUX), KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
-),
-/* Keymap 2: Function
+/* Keymap 1: Function
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -120,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        | LEFT | DOWN | RGHT |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       | HOME | PGDN | PGUP |  END |      |
+ *   |      |      |      |      |      |                                       |PD/HM | UP/ED|      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -140,6 +108,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, MO(_TMUX)
+),
+/* Keymap 2: Number Layer
+ *
+ * ,---------------------------------------------------.           ,--------------------------------------------------.
+ * |         |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
+ * |         |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   Del  |
+ * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |         |      |      |      |      |      |------|           |------|_SYSTM|   -  |   =  |   [  |   ]  |   T-:  |
+ * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |         |  T-Z |  T-X |  T-C |  T-V |      |      |           |      |  T-N |  T-M |  T-, |      |      |    \   |
+ * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |       |      |      |      |      |                                       |PD/HM | UP/ED|      |      |      |
+ *   `-----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[_NUMBER] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_TRNS,     KC_TRNS, KC_6,    KC_7,    KC_8,       KC_9,    KC_0,    KC_DEL,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   MO(_SYSTM),  KC_MINS, KC_EQL,     KC_LBRC, KC_RBRC, TMUX_COLON,
+  KC_TRNS, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  KC_TRNS, KC_TRNS,     KC_TRNS, TMUX_N,  TMUX_M,  TMUX_COMMA, KC_TRNS, KC_TRNS, KC_BSLS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                     TD(TD_PDHM), TD(TD_PUED), KC_TRNS, KC_TRNS,  KC_TRNS,
+                                               KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
+                                                        KC_TRNS,     KC_TRNS,
+                                    MO(_TMUX), KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
 ),
 /* Keymap 3: TMUX
  *
