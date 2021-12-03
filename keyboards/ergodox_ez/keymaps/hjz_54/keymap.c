@@ -29,8 +29,8 @@ enum custom_keycodes {
 enum {
     TD_LD,
     TD_RU,
-    TD_PDHM,
-    TD_PUED,
+    TD_PUHM,
+    TD_PDED,
     TD_BKDEL,
 };
 
@@ -39,8 +39,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
     [TD_LD]   = ACTION_TAP_DANCE_DOUBLE(KC_LEFT, KC_DOWN),  // Left,  Down
     [TD_RU]   = ACTION_TAP_DANCE_DOUBLE(KC_RGHT, KC_UP),    // Right, UP
-    [TD_PDHM] = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_HOME),  // Page Down, HOME
-    [TD_PUED] = ACTION_TAP_DANCE_DOUBLE(KC_PGUP, KC_END),   // Page Up  , END
+    [TD_PUHM] = ACTION_TAP_DANCE_DOUBLE(KC_PGUP, KC_HOME),  // Page Up, HOME
+    [TD_PDED] = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_END),   // Page Down  , END
 };
 
 // clang-format off
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |PD/HM | UP/ED|      |      |      |
+ *   |      |      |      |      |      |                                       |PU/HM | PD/ED|      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS, KC_TRNS, KC_UP,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS,
   KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS,                       KC_LEFT, KC_DOWN, KC_UP,       KC_RGHT, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                     TD(TD_PDHM), TD(TD_PUED), KC_TRNS, KC_TRNS,  KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                     TD(TD_PUHM), TD(TD_PDED), KC_TRNS, KC_TRNS,  KC_TRNS,
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, MO(_TMUX)
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   MO(_SYSTM),  KC_MINS, KC_EQL,     KC_LBRC, KC_RBRC, TMUX_COLON,
   KC_TRNS, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  KC_TRNS, KC_TRNS,     KC_TRNS, TMUX_N,  TMUX_M,  TMUX_COMMA, KC_TRNS, KC_TRNS, KC_BSLS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                     TD(TD_PDHM), TD(TD_PUED), KC_TRNS, KC_TRNS,  KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                     TD(TD_PUHM), TD(TD_PDED), KC_TRNS, KC_TRNS,  KC_TRNS,
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
                                     MO(_TMUX), KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
