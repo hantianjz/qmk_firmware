@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |  '   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt |  INS | LGUI | /Space  /       \Space \  |_SHIFT| LT/UP| RT/UP|
+ *                   | LAlt |  INS | LGUI | /Space  /       \Space \  |RShift| LT/UP| RT/UP|
  *                   `----------------------------'           '------''--------------------'
  */
 
@@ -64,8 +64,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GESC,         KC_1,  KC_2,  KC_3,  KC_4,  KC_5,                   KC_6,  KC_7,  KC_8,    KC_9,    KC_0,    KC_BSPC,
   KC_TAB,          KC_Q,  KC_W,  KC_E,  KC_R,  KC_T,                   KC_Y,  KC_U,  KC_I,    KC_O,    KC_P,    KC_DEL,
   LCTL_T(KC_TAB),  KC_A,  KC_S,  KC_D,  KC_F,  KC_G,                   KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
-  KC_LSFT,         KC_Z,  KC_X,  KC_C,  KC_V,  KC_B, _______,MO(_SYSTM),KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
-        KC_LALT, KC_INS, KC_LGUI, LT(_FUNC, KC_SPC),      LT(_SHIFT, KC_SPC), _______, TD(TD_LD), TD(TD_RU) \
+  KC_LSPO,         KC_Z,  KC_X,  KC_C,  KC_V,  KC_B, _______,MO(_SYSTM),KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
+        KC_LALT, KC_INS, KC_LGUI, LT(_FUNC, KC_SPC),      LT(_SHIFT, KC_SPC), KC_RSPC, TD(TD_LD), TD(TD_RU) \
 ),
 /* FUNCTION
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      |      | /       /       \      \  |PU/HM | PD/ED|      |
+ *                   |      |      |      | /       /       \      \  |RShift|PU/HM | PD/ED|
  *                   `----------------------------'           '------''--------------------'
  */
 [_FUNC] = LAYOUT( \
@@ -85,8 +85,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
   _______, _______,   KC_UP, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
   KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,                   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                    _______, _______, _______, _______,             MO(_TMUX), _______, TD(TD_PUHM), TD(TD_PDED)
+  KC_LSFT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                    _______, _______, _______, _______,             MO(_TMUX), KC_RSFT, TD(TD_PUHM), TD(TD_PDED)
 ),
 /* SHIFT
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |  T-Z |  T-X |  T-C |  T-V |      |-------|    |-------|  T-N |  T-M |  T-, |      |      |   \  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      |      | /       /       \      \  |PU/HM | PD/ED|      |
+ *                   |      |      |      | /       /       \      \  |      |PU/HM | PD/ED|
  *                   `----------------------------'           '------''--------------------'
  */
 
@@ -106,8 +106,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR,  KC_LPRN, KC_RPRN, _______,
   _______, _______, _______, _______, _______, _______,                     _______, _______, _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,                     _______, KC_MINS,  KC_EQL,  KC_LBRC, KC_RBRC, TMUX_COLON,
-  _______, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  _______, _______, _______,    TMUX_N, TMUX_M,  TMUX_COMMA, _______, _______, KC_BSLS,
-                             _______, _______, _______,MO(_TMUX), _______, _______, TD(TD_PUHM), TD(TD_PDED)
+  KC_LSFT, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  _______, _______, _______,    TMUX_N, TMUX_M,  TMUX_COMMA, _______, _______, KC_BSLS,
+                             _______, _______, _______,MO(_TMUX), _______, KC_RSFT, TD(TD_PUHM), TD(TD_PDED)
 ),
 /* TMUX
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -126,8 +126,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                   _______, _______,    _______,    _______, _______, _______,
   _______, TMUX_Q,  _______, _______, _______, _______,                   _______, _______,    _______,    TMUX_CTRL_O, TMUX_P, _______,
   _______, TMUX_A,  TMUX_S,  TMUX_D,  _______, _______,                   _______,TMUX_MINUS,TMUX_PLUS,  TMUX_OPEN_SQ_B, TMUX_CLOSE_SQ_B, _______,
-  _______, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  _______, _______, _______,  TMUX_N, TMUX_M,     TMUX_COMMA, _______,     _______, _______,
-                             _______, _______, _______, _______, _______, _______, _______, _______ \
+  KC_LSFT, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  _______, _______, _______,  TMUX_N, TMUX_M,     TMUX_COMMA, _______,     _______, _______,
+                             _______, _______, _______, _______, _______, KC_RSFT, _______, _______ \
   ),
 /* SYSTEM
  * ,-----------------------------------------.                    ,-----------------------------------------.
