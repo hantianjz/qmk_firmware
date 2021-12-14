@@ -11,17 +11,17 @@ char layer_state_str[24];
 
 const char *read_layer_state(void) {
     if (layer_state & L_SYSTM) {
-        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: SYSTEM");
+        snprintf(layer_state_str, sizeof(layer_state_str), "SYSM");
     } else if (layer_state & L_TMUX) {
-        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: TMUX");
+        snprintf(layer_state_str, sizeof(layer_state_str), "TMUX");
     } else if (layer_state & L_SHIFT) {
-        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: SHIFT");
+        snprintf(layer_state_str, sizeof(layer_state_str), "SHFT");
     } else if (layer_state & L_FUNC) {
-        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: FUNC");
+        snprintf(layer_state_str, sizeof(layer_state_str), "FUNC");
     } else if (layer_state == L_BASE) {
-        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: BASE");
+        snprintf(layer_state_str, sizeof(layer_state_str), "BASE");
     } else {
-        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
+        snprintf(layer_state_str, sizeof(layer_state_str), "Un:%ld", layer_state);
     }
 
     return layer_state_str;
