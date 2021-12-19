@@ -33,3 +33,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #define AUTO_SHIFT_TIMEOUT 150
 #define NO_AUTO_SHIFT_ALPHA
+
+#define OLED_UPDATE_INTERVAL 200
+#define OLED_TIMEOUT 5000

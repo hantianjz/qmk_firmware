@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+#include <string.h>
+
 enum layer_number { _QWERTY = 0, _FUNC, _SHIFT, _TMUX, _SYSTM };
 
 enum custom_keycodes {
@@ -157,9 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
 #ifdef OLED_ENABLE
 
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_270;
-}
+oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
 
 // When you add source files to SRC in rules.mk, you can use functions.
 const char *read_layer_state(void);
@@ -169,16 +169,54 @@ const char *read_keylog(void);
 const char *read_keylogs(void);
 const char *read_mode_icon(bool swap);
 
+#    define SPINNER_SIZE 5
+static char spinner_buf[SPINNER_SIZE][SPINNER_SIZE];
+int         spinner_idx = 0;
+
+char *read_spinner(int idx) {
+    memset(spinner_buf, ' ', sizeof(spinner_buf));
+    switch (idx) {
+        case 0: {
+            for (int i = 0; i < SPINNER_SIZE; i++) {
+                spinner_buf[i][i] = '\\';
+            }
+        } break;
+        case 1: {
+            int row_offset = (SPINNER_SIZE / 2);
+            for (int i = 0; i < SPINNER_SIZE; i++) {
+                spinner_buf[i][row_offset] = '|';
+            }
+        } break;
+        case 2: {
+            for (int i = 0; i < SPINNER_SIZE; i++) {
+                spinner_buf[i][(SPINNER_SIZE - i - 1)] = '/';
+            }
+        } break;
+        case 3: {
+            int idx_offset = (SPINNER_SIZE / 2);
+            for (int i = 0; i < SPINNER_SIZE; i++) {
+                spinner_buf[idx_offset][i] = '-';
+            }
+        } break;
+        default:
+            break;
+    }
+    return (char *)spinner_buf;
+}
+
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        // If you want to change the display of OLED, you need to change here
         oled_write_ln(read_layer_state(), false);
-        // oled_write_ln(read_host_led_state(), false);
-        // oled_write_ln(read_timelog(), false);
     } else {
         oled_write_ln("SLAVE", false);
     }
     return true;
+}
+
+void oled_display(void) {
+    oled_set_cursor(0, 1);
+    oled_write_ln(read_spinner(spinner_idx), false);
+    spinner_idx = (spinner_idx + 1) % 4;
 }
 #endif  // OLED_ENABLE
 
@@ -255,6 +293,7 @@ bool process_tmux_record(uint16_t keycode, keyrecord_t *record) {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    oled_display();
     if ((keycode >= TMUX_Q) && (keycode <= TMUX_PLUS)) {
         return process_tmux_record(keycode, record);
     }
