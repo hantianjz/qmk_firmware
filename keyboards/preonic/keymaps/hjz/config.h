@@ -1,5 +1,7 @@
 #pragma once
 
+#define TAPPING_TERM 150
+
 /*
  * AUTO SHIFT
  */ 
