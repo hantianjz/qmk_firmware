@@ -21,7 +21,7 @@ const char *read_layer_state(void) {
     } else if (layer_state == L_BASE) {
         snprintf(layer_state_str, sizeof(layer_state_str), "BASE");
     } else {
-        snprintf(layer_state_str, sizeof(layer_state_str), "Un:%ld", layer_state);
+        snprintf(layer_state_str, sizeof(layer_state_str), "Un:%d", layer_state);
     }
 
     return layer_state_str;
