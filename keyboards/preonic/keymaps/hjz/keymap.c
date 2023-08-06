@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|------+------+------+------+------+------|
      * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |  '   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | CTL  | INS  | Alt  | GUI  |_FUNC |  Spc |  Spc |_SHIFT| Left | Down |  Up  |Right |
+     * |_SYSTM|  NO  |  NO  |  ALT |  GUI |S/FUNC|S/SHFT| _TMUX| Left | Down |  Up  |Right |
      * `-----------------------------------------------------------------------------------'
      */
     [_QWERTY] = LAYOUT_ortho_5x12(                                                                                  // Start
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_DEL,                                 // Row2
         LCTL_T(KC_TAB), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT,                      // Row3
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,                       // Row4
-        KC_LCTL, KC_INS, KC_LALT, KC_LGUI, MO(_FUNC), LT(_FUNC, KC_SPC), LT(_SHIFT, KC_SPC), MO(_SHIFT), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT  // Row5
+        MO(_SYSTM), KC_NO, KC_NO, KC_LALT, KC_LGUI, LT(_FUNC, KC_SPC), LT(_SHIFT, KC_SPC), MO(_TMUX), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT  // Row5
         ),
 
     /* Function
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|------+------+------+------+------+------|
      * |      |      |      |      |      |      |      |      |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      |      |      |      |_TMUX | HOME | PGDN | PGUP |  END |
+     * |      |      |      |      |      |      |_TMUX |      | HOME | PGDN | PGUP |  END |
      * `-----------------------------------------------------------------------------------'
      */
     [_FUNC] = LAYOUT_ortho_5x12(                                                                                     // Start
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    // Row2
         KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_TRNS, KC_TRNS,    // Row3
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  // Row4
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), MO(_TMUX), KC_HOME, KC_PGDN, KC_PGUP, KC_END  // Row5
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END  // Row5
         ),
 
     /* Shift
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|------+------+------+------+------+------|
      * |      | T-Z  |  T-X | T-C  | T-V  |      | T-N  | T-M  |  T-, |      |      |  \   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      |_TMUX |       _SYSTM|      | HOME | PGDN | PGUP |  END |
+     * |      |      |      |      |      |_TMUX |      |      | HOME | PGDN | PGUP |  END |
      * `-----------------------------------------------------------------------------------'
      */
     [_SHIFT] = LAYOUT_ortho_5x12(                                                                                      // Start
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    // Row2
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, TMUX_COLON,  // Row3
         KC_TRNS, TMUX_Z, TMUX_X, TMUX_C, TMUX_V, KC_TRNS, TMUX_N, TMUX_M, TMUX_COMMA, KC_TRNS, KC_TRNS, KC_BSLS,       // Row4
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), MO(_TMUX), MO(_SYSTM), KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END      // Row5
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_TMUX), KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END      // Row5
         ),
 
     /* TMUX
