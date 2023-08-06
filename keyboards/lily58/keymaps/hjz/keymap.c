@@ -38,10 +38,10 @@ enum {
 // Tap Dance definitions
 tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
-    [TD_LD]   = ACTION_TAP_DANCE_DOUBLE(KC_DOWN, KC_LEFT),  // Down, Left
-    [TD_RU]   = ACTION_TAP_DANCE_DOUBLE(KC_UP, KC_RGHT),    // Up, Right
-    [TD_PUHM] = ACTION_TAP_DANCE_DOUBLE(KC_PGUP, KC_HOME),  // Page Up, HOME
-    [TD_PDED] = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_END),   // Page Down  , END
+    [TD_LD]   = ACTION_TAP_DANCE_DOUBLE(KC_DOWN, KC_LEFT), // Down, Left
+    [TD_RU]   = ACTION_TAP_DANCE_DOUBLE(KC_UP, KC_RGHT),   // Up, Right
+    [TD_PUHM] = ACTION_TAP_DANCE_DOUBLE(KC_PGUP, KC_HOME), // Page Up, HOME
+    [TD_PDED] = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_END),  // Page Down  , END
 };
 
 // clang-format off
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |_SYSTM |------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |  '   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | INS  | LAlt | LGUI | /Space  /       \Space \  |RShift| LT/UP| RT/UP|
+ *                   | INS  | LAlt | LGUI | /Space  /       \Space \  |RShift| LT/DN | RT/UP|
  *                   `----------------------------'           '----------------------------'
  */
 
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |  T-Z |  T-X |  T-C |  T-V |      |-------|    |-------|  T-N |  T-M |  T-, |      |      |   \  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      |      | /       /       \      \  |      |PU/HM | PD/ED|
+ *                   |      |      |      | /       /       \      \  |      | Down |  Up  |
  *                   `----------------------------'           '------''--------------------'
  */
 
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______,                     _______, _______, _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______,                     _______, KC_MINS,  KC_EQL,  KC_LBRC, KC_RBRC, TMUX_COLON,
   KC_LSFT, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  _______, _______, _______,    TMUX_N, TMUX_M,  TMUX_COMMA, _______, _______, KC_BSLS,
-                             _______, _______, _______,MO(_TMUX), _______, KC_RSFT, TD(TD_PUHM), TD(TD_PDED)
+                             _______, _______, _______,MO(_TMUX), _______, KC_RSFT, KC_DOWN, KC_UP
 ),
 /* TMUX
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -159,7 +159,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
 #ifdef OLED_ENABLE
 
-oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return OLED_ROTATION_270;
+}
 
 // When you add source files to SRC in rules.mk, you can use functions.
 const char *read_layer_state(void);
@@ -218,7 +220,7 @@ void oled_display(void) {
     oled_write_ln(read_spinner(spinner_idx), false);
     spinner_idx = (spinner_idx + 1) % 4;
 }
-#endif  // OLED_ENABLE
+#endif // OLED_ENABLE
 
 void tmux_code(keyrecord_t *record, char *tmux_code) {
     if (record->event.pressed) {
