@@ -27,7 +27,7 @@ const char *read_layer_state(void) {
             snprintf(layer_state_str, sizeof(layer_state_str), "Layer: BASE");
             break;
         default:
-            snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
+            snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%d", layer_state);
     }
 
     return layer_state_str;
