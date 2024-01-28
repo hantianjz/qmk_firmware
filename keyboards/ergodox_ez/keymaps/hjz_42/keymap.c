@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_ergodox_pretty(
   // left hand
   KC_TRNS,         KC_TRNS,     KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS,              KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_GESC,         KC_Q,        KC_W,    KC_E,           KC_R,    KC_T,    KC_TRNS,              KC_TRNS,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+  QK_GESC,         KC_Q,        KC_W,    KC_E,           KC_R,    KC_T,    KC_TRNS,              KC_TRNS,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
   LCTL_T(KC_TAB),  KC_A,        KC_S,    KC_D,           KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
   KC_LSFT,         KC_Z,        KC_X,    KC_C,           KC_V,    KC_B,    KC_TRNS,              KC_TRNS,      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
   KC_TRNS,         KC_TRNS,     KC_TRNS, LALT_T(KC_INS), KC_LGUI,                                         TD(TD_LD),   TD(TD_RU),KC_TRNS, KC_TRNS, KC_TRNS,
@@ -339,7 +339,7 @@ bool process_control_record(uint16_t keycode, keyrecord_t *record) {
         case LCTL_T(KC_TAB):
             ctrl_hold = true;
             break;
-        case KC_GESC:
+        case QK_GESC:
             if (ctrl_hold) {
                 tap_code(KC_TAB);
                 return false;
@@ -401,7 +401,7 @@ bool process_gui_record(uint16_t keycode, keyrecord_t *record) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if ((keycode >= TMUX_Q) && (keycode <= TMUX_PLUS)) {
         return process_tmux_record(keycode, record);
-    } else if ((keycode == LCTL_T(KC_TAB)) || (keycode == KC_GESC)) {
+    } else if ((keycode == LCTL_T(KC_TAB)) || (keycode == QK_GESC)) {
         return process_control_record(keycode, record);
     } else if ((keycode == KC_LGUI) || gui_hold) {
         return process_gui_record(keycode, record);

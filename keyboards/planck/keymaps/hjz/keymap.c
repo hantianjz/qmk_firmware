@@ -217,7 +217,7 @@ bool process_control_record(uint16_t keycode, keyrecord_t *record) {
         case LCTL_T(KC_TAB):
             ctrl_hold = true;
             break;
-        case KC_GESC:
+        case QK_GESC:
             if (ctrl_hold) {
                 tap_code(KC_TAB);
                 return false;
@@ -279,7 +279,7 @@ bool process_gui_record(uint16_t keycode, keyrecord_t *record) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if ((keycode >= TMUX_Q) && (keycode <= TMUX_PLUS)) {
         return process_tmux_record(keycode, record);
-    } else if ((keycode == LCTL_T(KC_TAB)) || (keycode == KC_GESC)) {
+    } else if ((keycode == LCTL_T(KC_TAB)) || (keycode == QK_GESC)) {
         return process_control_record(keycode, record);
     } else if ((keycode == KC_LGUI) || gui_hold) {
         return process_gui_record(keycode, record);
