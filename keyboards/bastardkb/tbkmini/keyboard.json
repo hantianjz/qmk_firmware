@@ -70,7 +70,9 @@
         "split_count": [21, 21]
     },
     "split": {
-        "soft_serial_pin": "GP1",
+        "serial": {
+            "pin": "GP1"
+        },
         "transport": {
             "sync": {
                 "matrix_state": true
