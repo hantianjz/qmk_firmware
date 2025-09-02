@@ -19,6 +19,7 @@
 #pragma once
 
 /* Pointing device configuration. */
+#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 // Enable use of pointing device on slave split.
 #define SPLIT_POINTING_ENABLE
