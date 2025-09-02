@@ -4,7 +4,7 @@
     "url": "https://bastardkb.com/charybdis",
     "usb": {
         "device_version": "2.0.0",
-        "pid": "0x1324",
+        "pid": "0x1833",
         "vid": "0xA8F8"
     },
     "rgb_matrix": {
