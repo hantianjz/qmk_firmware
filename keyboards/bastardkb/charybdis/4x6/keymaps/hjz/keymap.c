@@ -64,7 +64,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       QK_GESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
+       QK_GESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, DRGSCRL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
         KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BTN1,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
@@ -72,8 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_QUOT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                   KC_LGUI, PT_LSPC, LSYSM,      KC_ENT,   PT_RSPC,
-                                           KC_LCTL, KC_LALT,     KC_BSPC
+                           LGUI_T(KC_SPC), PT_LSPC,  LSYSM,      KC_BSPC,   PT_RSPC,
+                                           KC_LCTL, KC_LALT,     KC_BTN2
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -87,8 +87,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  XXXXXXX, XXXXXXX, LSYSM,      XXXXXXX, XXXXXXX,
-                                           XXXXXXX, XXXXXXX,     LTMUX
+                                  XXXXXXX, XXXXXXX, XXXXXXX,    LTMUX,   LTMUX,
+                                           XXXXXXX, XXXXXXX,    XXXXXXX
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -101,10 +101,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, TMUX_COLON,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LSFT, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  XXXXXXX,    TMUX_N, TMUX_M,TMUX_COMMA, XXXXXXX, XXXXXXX, KC_BSLS,
+       KC_LSFT, TMUX_Z,  TMUX_X,  TMUX_C,  TMUX_V,  XXXXXXX,    TMUX_N,  TMUX_M,TMUX_COMMA, XXXXXXX, XXXXXXX, KC_BSLS,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  XXXXXXX, XXXXXXX, XXXXXXX,    LSYSM,   KC_RGHT,
-                                           XXXXXXX, LTMUX,      KC_LEFT
+                                  LTMUX,   LTMUX,   XXXXXXX,    XXXXXXX, XXXXXXX,
+                                           XXXXXXX, XXXXXXX,    XXXXXXX
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -133,8 +133,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, KC_BTN2, KC_BTN1,    KC_MNXT, KC_MUTE, SNIPING, DRGSCRL, _______, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  XXXXXXX, XXXXXXX, XXXXXXX,    KC_BTN1, KC_BTN2,
-                                           XXXXXXX, XXXXXXX,    XXXXXXX
+                                  XXXXXXX, XXXXXXX, XXXXXXX,    KC_BTN1, DRGSCRL,
+                                           XXXXXXX, XXXXXXX,    KC_BTN2
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
