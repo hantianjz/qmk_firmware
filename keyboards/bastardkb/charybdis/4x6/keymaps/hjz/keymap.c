@@ -51,7 +51,12 @@ enum custom_keycodes {
 #define PT_LSPC LT(LAYER_FUNC, KC_SPC)
 #define PT_RSPC LT(LAYER_SHIFT, KC_SPC)
 #define LTMUX MO(LAYER_TMUX)
-#define LSYSM MO(LAYER_SYSTEM)
+#define PTLSYSM LT(LAYER_SYSTEM, KC_TAB)
+#define GUI_SPC LGUI_T(KC_SPC)
+#define SFT_BSPC RSFT_T(KC_BSPC)
+#define SFT_DEL RSFT_T(KC_DEL)
+#define CTL_TAB LCTL_T(KC_TAB)
+#define ALT_ESC LALT_T(KC_ESC)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -66,14 +71,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        QK_GESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, DRGSCRL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BTN1,
+       PTLSYSM,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BTN1,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_ENT,
+       CTL_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_ENT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_QUOT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                           LGUI_T(KC_SPC), PT_LSPC,  LSYSM,      KC_BSPC,   PT_RSPC,
-                                           KC_LCTL, KC_LALT,     KC_BTN2
+                           LGUI_T(KC_SPC), PT_LSPC, SFT_DEL,     SFT_BSPC,  PT_RSPC,
+                                           KC_LCTL, ALT_ESC,     KC_BTN2
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
